@@ -1,0 +1,11 @@
+config_version: ${project.version}
+
+# 线程等待拦截
+thread_sleep:
+  # 开关
+  enable: true
+  # 超过多少ms就拦截
+  # 不建议设置过小的值，可能会影响正常运行
+  value: 5000
+  # 拦截持续多少时间 (-1 全部)
+  time: 300000

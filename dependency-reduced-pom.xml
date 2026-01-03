@@ -5,6 +5,12 @@
   <artifactId>FuckOpenWeb</artifactId>
   <version>1.0.0</version>
   <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -28,6 +34,22 @@
                 <relocation>
                   <pattern>org.objectweb.asm</pattern>
                   <shadedPattern>cn.chengzhimeow.fuckopenweb.libs.asm</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>cn.chengzhimeow.ccyaml</pattern>
+                  <shadedPattern>cn.chengzhimeow.fuckopenweb.libs.ccyaml</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.intellij</pattern>
+                  <shadedPattern>cn.chengzhimeow.fuckopenweb.libs.intellij</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.jetbrains</pattern>
+                  <shadedPattern>cn.chengzhimeow.fuckopenweb.libs.jetbrains</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.yaml.snakeyaml</pattern>
+                  <shadedPattern>cn.chengzhimeow.fuckopenweb.libs.snakeyaml</shadedPattern>
                 </relocation>
               </relocations>
             </configuration>
@@ -53,6 +75,10 @@
     <repository>
       <id>huawei-maven</id>
       <url>https://repo.huaweicloud.com/repository/maven</url>
+    </repository>
+    <repository>
+      <id>catnies-repo</id>
+      <url>https://repo.catnies.top/releases</url>
     </repository>
   </repositories>
   <properties>

@@ -1,5 +1,6 @@
 package cn.chengzhimeow.fuckopenweb.visitor;
 
+import cn.chengzhimeow.fuckopenweb.Agent;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -30,6 +31,22 @@ public class ClassVisitor extends org.objectweb.asm.ClassVisitor {
                             false
                     );
                     return;
+                }
+
+
+                if (owner.equals("java/lang/Thread") && name.equals("sleep")) {
+                    if (Agent.configSetting.getData().getBoolean("thread_sleep.enable")) {
+                        System.out.println("[FuckOpenWeb] 在 " + ClassVisitor.this.className + " 找到 等待线程 操作, 已注入!");
+
+                        super.visitMethodInsn(
+                                Opcodes.INVOKESTATIC,
+                                "cn/chengzhimeow/fuckopenweb/magic/FakeMethods",
+                                "fakeSleep",
+                                descriptor,
+                                false
+                        );
+                        return;
+                    }
                 }
 
                 super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
