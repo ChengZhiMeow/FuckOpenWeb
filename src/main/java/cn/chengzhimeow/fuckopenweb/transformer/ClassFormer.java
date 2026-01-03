@@ -10,7 +10,7 @@ import java.security.ProtectionDomain;
 public class ClassFormer implements ClassFileTransformer {
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
-        if (className.startsWith("java/") || className.startsWith("sun/") || className.startsWith("com/sun/") || className.startsWith("jdk/"))
+        if (className.startsWith("cn/chengzhimeow/fuckopenweb/") || className.startsWith("java/") || className.startsWith("sun/") || className.startsWith("com/sun/") || className.startsWith("jdk/"))
             return classfileBuffer;
 
         try {
